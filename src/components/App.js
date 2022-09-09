@@ -32,9 +32,10 @@ export default function App() {
       .then((responsedata) => {
         // const firstCurr = Object.keys(responsedata.conversion_rates)[145];
         setData([...Object.keys(responsedata.conversion_rates)]);
+        console.log([...Object.keys(responsedata.conversion_rates)]);
         // setFirstInput(responsedata.base_code);
         // setSecondInput(Object.keys(responsedata.conversion_rates)[145]);
-        setExchangeRate(responsedata.conversion_rates[firstCurr]);
+        // setExchangeRate(responsedata.conversion_rates[firstCurr]);
       });
   }, []);
   const first = useFirstPrevious(firstInput);
@@ -44,10 +45,10 @@ export default function App() {
     //   setFirstInput(second);
     //   setSecondInput(first);
     // }
-    if (firstInput === secondInput) {
-      setFirstInput(second);
-      setSecondInput(first);
-    }
+    // if (firstInput === secondInput) {
+    //   setFirstInput(second);
+    //   setSecondInput(first);
+    // }
     if (firstInput != null && secondInput != null) {
       fetch(
         `https://v6.exchangerate-api.com/v6/7cc8565835b9b47e14685f57/pair/${firstInput}/${secondInput}`

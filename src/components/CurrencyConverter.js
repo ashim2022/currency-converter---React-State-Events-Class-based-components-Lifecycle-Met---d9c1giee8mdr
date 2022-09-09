@@ -17,13 +17,15 @@ function Converter(props) {
       </h3>
       <div>
         <select value={props.firstInput} onChange={props.handleFromCurreny}>
-          {props.data.map((rate) => {
-            return (
-              <option key={rate} value={rate}>
-                {rate}
-              </option>
-            );
-          })}
+          {props.data
+            .filter((I) => I !== props.secondInput)
+            .map((rate, index) => {
+              return (
+                <option key={index} value={rate}>
+                  {rate}
+                </option>
+              );
+            })}
         </select>
         <input
           type="number"
@@ -34,13 +36,15 @@ function Converter(props) {
       </div>
       <div>
         <select value={props.secondInput} onChange={props.handleToCurrency}>
-          {props.data.map((rate) => {
-            return (
-              <option key={rate} value={rate}>
-                {rate}
-              </option>
-            );
-          })}
+          {props.data
+            .filter((I) => I !== props.firstInput)
+            .map((rate, index) => {
+              return (
+                <option key={index} value={rate}>
+                  {rate}
+                </option>
+              );
+            })}
         </select>
         <input
           type="number"
